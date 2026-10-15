@@ -104,7 +104,7 @@ function looksLikeMcp(f) {
 // ---------- 启动方式：优先 npx，因为它跟着版本走且到处都有 ----------
 
 const FROM_NPM = ROOT.includes(`${path.sep}node_modules${path.sep}`);
-const REPO = 'https://github.com/alchaincyf/huashu-chrome';
+const REPO = 'https://github.com/jyf2100/agentchrome-mcp';
 
 // process.execPath 常常是 /opt/homebrew/Cellar/node/26.0.0/bin/node 或
 // ~/.nvm/versions/node/v22.1.0/bin/node 这种带版本号的真实路径——node 一升级它就消失，

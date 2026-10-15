@@ -14,7 +14,7 @@
 
 ## 我们收集什么
 
-不收集任何数据。没有注册流程，没有遥测，没有统计上报。开源的代码全部在 [github.com/alchaincyf/huashu-chrome](https://github.com/alchaincyf/huashu-chrome)，任何人都可以审计「真的没有上报」。
+不收集任何数据。没有注册流程，没有遥测，没有统计上报。开源的代码全部在 [github.com/jyf2100/agentchrome-mcp](https://github.com/jyf2100/agentchrome-mcp)，任何人都可以审计「真的没有上报」。
 
 ## 敏感信息如何被对待
 

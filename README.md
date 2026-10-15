@@ -2,13 +2,13 @@
 
 # agentchrome-mcp
 
-<img src="https://raw.githubusercontent.com/alchaincyf/huashu-chrome/master/media/architecture.png" alt="系统原理图：一条命令穿过五个器官——npm 包 → CLI → MCP server → 本地桥 → Chrome 扩展，最后落在你真实浏览器的真实按钮上" width="100%">
+<img src="https://raw.githubusercontent.com/jyf2100/agentchrome-mcp/master/media/architecture.png" alt="系统原理图：一条命令穿过五个器官——npm 包 → CLI → MCP server → 本地桥 → Chrome 扩展，最后落在你真实浏览器的真实按钮上" width="100%">
 
 > *「工具返回『已点击』不算数，页面真的动了才算。」*
 
 [![npm](https://img.shields.io/npm/v/agentchrome-mcp?color=cb3837&logo=npm)](https://www.npmjs.com/package/agentchrome-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/alchaincyf/huashu-chrome?style=social)](https://github.com/alchaincyf/huashu-chrome)
+[![Stars](https://img.shields.io/github/stars/jyf2100/agentchrome-mcp?style=social)](https://github.com/jyf2100/agentchrome-mcp)
 [![Node](https://img.shields.io/badge/Node-%E2%89%A520-339933?logo=node.js&logoColor=white)](#安装)
 
 <br>
@@ -318,7 +318,7 @@ content script 派发的事件 `isTrusted` 永远是 false。四类场景因此�
 agent 全在后台标签页里干活，用户面前本来是一片安静的浏览器——他随手点开一页，
 不知道那页已经被某个会话认领了。所以每个会话都有一张工牌，同一套身份三处露出：
 
-![被操控的 Chrome 长什么样：彩色标签组、四边描边、呼吸光标、右下角驾驶舱、人工介入浮条；下方对比 agent 截图视角——幕帘挡住了给人看的一切](https://raw.githubusercontent.com/alchaincyf/huashu-chrome/master/media/visible.png)
+![被操控的 Chrome 长什么样：彩色标签组、四边描边、呼吸光标、右下角驾驶舱、人工介入浮条；下方对比 agent 截图视角——幕帘挡住了给人看的一切](https://raw.githubusercontent.com/jyf2100/agentchrome-mcp/master/media/visible.png)
 
 | 露出位置 | 长什么样 | 解决什么 |
 |---|---|---|
@@ -350,7 +350,7 @@ L2 只在需要真实事件、后台截图、或页面 CSP 拦下求值时才接
 
 一条 `click` 从 agent 到页面再回到 agent 的完整旅程（8 站，全程 127.0.0.1）：
 
-![信号追踪：agent → stdio → MCP server → WebSocket+token → 桥（白名单裁决/审计/身份章）→ 扩展 → 页面定位与真实点击 → 效果证据 → 快照原路返回](https://raw.githubusercontent.com/alchaincyf/huashu-chrome/master/media/journey.png)
+![信号追踪：agent → stdio → MCP server → WebSocket+token → 桥（白名单裁决/审计/身份章）→ 扩展 → 页面定位与真实点击 → 效果证据 → 快照原路返回](https://raw.githubusercontent.com/jyf2100/agentchrome-mcp/master/media/journey.png)
 
 ### 多会话隔离
 
@@ -359,7 +359,7 @@ L2 只在需要真实事件、后台截图、或页面 CSP 拦下求值时才接
 不该跟着一起没。新会话想用一个还有主的页面会被拦下并给出三条出路；主人已经断开的
 页面才可以继承。协议细节见 [`docs/协议.md`](docs/协议.md)。
 
-![多会话隔离：会话 A 紫色描边、会话 B 绿色描边各管各页；两个会话踩同一页时边框变双色告警条纹](https://raw.githubusercontent.com/alchaincyf/huashu-chrome/master/media/sessions.png)
+![多会话隔离：会话 A 紫色描边、会话 B 绿色描边各管各页；两个会话踩同一页时边框变双色告警条纹](https://raw.githubusercontent.com/jyf2100/agentchrome-mcp/master/media/sessions.png)
 
 外观（会话色）是会话 id 的纯函数，所以它继承了会话身份那份跨桥重启的稳定性——
 桥抖一下，页面上的标记不会莫名换色。同一个页面被两个会话占着时，边框变成双色斜条纹、
