@@ -13,22 +13,21 @@
   <!-- squircle background -->
   <rect width="128" height="128" rx="28" fill="url(#bg)"/>
 
-  <!-- browser window -->
-  <rect x="20" y="26" width="72" height="56" rx="10" fill="url(#win)"/>
-  <path d="M20 36 a10 10 0 0 1 10-10 h52 a10 10 0 0 1 10 10 v5 H20 Z" fill="#c9d6e8"/>
-  <circle cx="30" cy="33.5" r="2.8" fill="#ff5f57"/>
-  <circle cx="39.5" cy="33.5" r="2.8" fill="#febc2e"/>
-  <circle cx="49" cy="33.5" r="2.8" fill="#28c840"/>
-  <rect x="28" y="51" width="48" height="6" rx="3" fill="#93a5c0"/>
-  <rect x="28" y="63" width="32" height="6" rx="3" fill="#c2cfe2"/>
+  <!-- browser window, A 字母标是内容主体 -->
+  <rect x="18" y="24" width="76" height="58" rx="10" fill="url(#win)"/>
+  <path d="M18 34 a10 10 0 0 1 10-10 h56 a10 10 0 0 1 10 10 v5 H18 Z" fill="#c9d6e8"/>
+  <circle cx="28" cy="31.5" r="2.8" fill="#ff5f57"/>
+  <circle cx="37.5" cy="31.5" r="2.8" fill="#febc2e"/>
+  <circle cx="47" cy="31.5" r="2.8" fill="#28c840"/>
+  <text x="56" y="78" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-weight="800" font-size="36" fill="#1d3f7a">A</text>
 
-  <!-- cursor (the agent's hand), hero element -->
-  <g transform="translate(58,62) scale(2.1)">
+  <!-- cursor,小一号,从右下角点向窗口 -->
+  <g transform="translate(82,80) scale(1.5)">
     <path d="M0 0 L0 20 L5 15 L8.5 22.5 L11.5 21 L8 13.5 L14.5 13.5 Z"
-          fill="#ffffff" stroke="#0c1226" stroke-width="1.8" stroke-linejoin="round"/>
+          fill="#ffffff" stroke="#0c1226" stroke-width="2" stroke-linejoin="round"/>
   </g>
 
   <!-- AI sparkles -->
-  <path d="M100 32 C101.6 39.5 104.5 42.4 112 44 C104.5 45.6 101.6 48.5 100 56 C98.4 48.5 95.5 45.6 88 44 C95.5 42.4 98.4 39.5 100 32 Z" fill="#fbbf24"/>
-  <path d="M27 95 C27.9 98.9 29.6 100.6 33.5 101.5 C29.6 102.4 27.9 104.1 27 108 C26.1 104.1 24.4 102.4 20.5 101.5 C24.4 100.6 26.1 98.9 27 95 Z" fill="#7ea6ff"/>
+  <path d="M106 44 C107.6 51.5 110.5 54.4 118 56 C110.5 57.6 107.6 60.5 106 68 C104.4 60.5 101.5 57.6 94 56 C101.5 54.4 104.4 51.5 106 44 Z" fill="#fbbf24"/>
+  <path d="M26 96 C26.9 99.9 28.6 101.6 32.5 102.5 C28.6 103.4 26.9 105.1 26 109 C25.1 105.1 23.4 103.4 19.5 102.5 C23.4 101.6 25.1 99.9 26 96 Z" fill="#7ea6ff"/>
 </svg>
