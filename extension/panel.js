@@ -2,7 +2,7 @@
 //
 // 2026-10-13 起它接替了两样东西：原 popup（连接状态、开关、会话列表）和页内
 // 驾驶舱（准备做 / 正在做 / 时间线）。驾驶舱搬出页面是因为它常驻右下角，
-// 正好压住聊天类页面的发送键（花叔收到的反馈，豆包实测复现）。
+// 正好压住聊天类页面的发送键（agentchrome收到的反馈，豆包实测复现）。
 //
 // 数据源：background 每条命令后把该 tab 的归属与时间线写进 storage.session
 // （panel:<tabId>），这里只订阅、只渲染。所有外部文字（agent 声明的意图、
@@ -116,7 +116,7 @@ async function renderSessions() {
   box.textContent = '';
   const rows = r?.sessions || [];
   if (!rows.length) {
-    box.appendChild(el('div', 'empty', '还没有 agent 在线。在 Claude Code、Codex 这类工具里让它用 huashu-chrome 做件事，这里就会出现。'));
+    box.appendChild(el('div', 'empty', '还没有 agent 在线。在 Claude Code、Codex 这类工具里让它用 agentchrome-mcp 做件事，这里就会出现。'));
     return rows;
   }
   for (const s of rows) {
@@ -167,21 +167,21 @@ async function renderConn(sessionCount) {
     const level = compat({ ext: MINE, cli: r.bridge });
     const note = compatNote(level, { ext: MINE, cli: r.bridge });
     const needCli = level === 'cli-old' || (level === 'protocol' && cmpVersion(MINE, r.bridge) > 0);
-    box.appendChild(light(note ? 'warn' : 'ok', `本地端 v${r.bridge || '?'}`, note || '已连接', needCli ? 'npx -y huashu-chrome@latest install' : null));
+    box.appendChild(light(note ? 'warn' : 'ok', `本地端 v${r.bridge || '?'}`, note || '已连接', needCli ? 'npx -y agentchrome-mcp@latest install' : null));
     pill = note ? ['warn', '已连接（有更新）'] : ['ok', '已连接'];
   } else {
     const never = !r.lastRx;
     box.appendChild(light('bad', '本地端未连接',
       never ? '还没装本地端，或者装了但还没有 agent 用过它（本地端由 agent 第一次调用时拉起）。在终端里跑这一行，它会自动配好你电脑上的 agent：'
         : `上次收到心跳是 ${relTime(r.lastRx)}。先点下面的「重连」；不行再在终端跑：`,
-      never ? 'npx -y huashu-chrome@latest install' : 'npx huashu-chrome doctor'));
+      never ? 'npx -y agentchrome-mcp@latest install' : 'npx agentchrome-mcp doctor'));
     if (r.offscreenError) box.appendChild(light('warn', '后台文档建不起来', r.offscreenError));
   }
   $('reconnRow').hidden = !!r.connected;
 
   box.appendChild(sessionCount
     ? light('ok', `${sessionCount} 个 agent 在线`, '每个 agent 用自己的颜色，页面描边和标签组同色')
-    : light('', '暂无 agent 在线', '在你的 agent 里说一句「用 huashu-chrome 打开……」就会出现在这里'));
+    : light('', '暂无 agent 在线', '在你的 agent 里说一句「用 agentchrome-mcp 打开……」就会出现在这里'));
 
   $('pilldot').className = `dot ${pill[0]}`;
   $('pilltxt').textContent = pill[1];

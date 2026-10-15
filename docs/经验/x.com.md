@@ -115,7 +115,7 @@ token 算法：`((id/1e15)*Math.PI).toString(36)` 去掉 `0` 和 `.`。
 
 ## 2026-10-06：Quote视频原生排期与CLI视频MIME
 
-来源：花叔穿越名画/发布/英文夜间推广，X真实Chrome本机v1.2.1实测。Quote可同时有文章卡片、MP4及原生定时；普通独立视频帖也可定时。Schedule面板5个select依次月/日/年/时/分，当次显示China Standard Time；Confirm只确认时间，composer最终Schedule才创建服务端任务。FetchScheduledTweets读取scheduled_tweet_list的rest_id、scheduling_info.execute_at/state、tweet_create_request.status/attachment_url/media_ids及media_entities.media_info.duration_millis，新标签页刷新后核对。scheduled_id不等于公开tweet ID。
+来源：agentchrome穿越名画/发布/英文夜间推广，X真实Chrome本机v1.2.1实测。Quote可同时有文章卡片、MP4及原生定时；普通独立视频帖也可定时。Schedule面板5个select依次月/日/年/时/分，当次显示China Standard Time；Confirm只确认时间，composer最终Schedule才创建服务端任务。FetchScheduledTweets读取scheduled_tweet_list的rest_id、scheduling_info.execute_at/state、tweet_create_request.status/attachment_url/media_ids及media_entities.media_info.duration_millis，新标签页刷新后核对。scheduled_id不等于公开tweet ID。
 
 旧CLI upload对MP4发application/octet-stream，回执「投入」而X不显示媒体、不发上传请求；MCP upload已支持path＋video/mp4，复用其BridgeClient/CDP直接读盘路径后出现Uploading/Processing/Ready并可定时。不要用「投入」回执替代附件Ready。路径见该项目上传视频.mjs，未修改CLI。
 

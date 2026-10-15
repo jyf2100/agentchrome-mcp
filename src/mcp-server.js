@@ -541,7 +541,7 @@ function wrapUntrusted(body, meta = '') {
 export async function startMcpServer({ client = 'unknown' } = {}) {
   const bridge = new BridgeClient({ client });
   const server = new Server(
-    { name: 'huashu-chrome', version: VERSION },
+    { name: 'agentchrome-mcp', version: VERSION },
     { capabilities: { tools: {} }, instructions: STRATEGY }
   );
 
@@ -555,7 +555,7 @@ export async function startMcpServer({ client = 'unknown' } = {}) {
     host = resolveHost({ clientInfo: server.getClientVersion(), flag: client });
     bridge.identify(host.client, host.label);
     audit({ ev: 'host', client: host.client, sid: bridge.sessionId, raw: host.raw, via: host.source });
-    console.error(`[huashu-chrome] 宿主：${host.label || host.client}（${host.source} = ${JSON.stringify(host.raw ?? client)}）`);
+    console.error(`[agentchrome-mcp] 宿主：${host.label || host.client}（${host.source} = ${JSON.stringify(host.raw ?? client)}）`);
     return host;
   };
 

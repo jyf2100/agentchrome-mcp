@@ -1,7 +1,7 @@
 // 宿主识别 —— 侧栏、页面小头像和审计日志里「谁在操控」那个名字的来源。
 //
 // 以前只认启动参数 --client。它由 install 写进各 agent 的配置，本该一家一个值，
-// 但配置会被人手抄：花叔自己的 Codex 配置就抄成了 --client claude-code，于是
+// 但配置会被人手抄：agentchrome自己的 Codex 配置就抄成了 --client claude-code，于是
 // Codex 干活时页面右下角写着「Claude Code」（2026-09-09）。开源出去之后用户
 // 环境只会更杂（一段配置在 Codex / OpenClaw / Hermes / WorkBuddy 之间复制粘贴是
 // 常态），一个给人看的身份不能押在一段手填的参数上。

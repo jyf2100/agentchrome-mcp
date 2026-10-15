@@ -1,12 +1,12 @@
 <div align="center">
 
-# huashu-chrome
+# agentchrome-mcp
 
 <img src="https://raw.githubusercontent.com/alchaincyf/huashu-chrome/master/media/architecture.png" alt="系统原理图：一条命令穿过五个器官——npm 包 → CLI → MCP server → 本地桥 → Chrome 扩展，最后落在你真实浏览器的真实按钮上" width="100%">
 
 > *「工具返回『已点击』不算数，页面真的动了才算。」*
 
-[![npm](https://img.shields.io/npm/v/huashu-chrome?color=cb3837&logo=npm)](https://www.npmjs.com/package/huashu-chrome)
+[![npm](https://img.shields.io/npm/v/agentchrome-mcp?color=cb3837&logo=npm)](https://www.npmjs.com/package/agentchrome-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/alchaincyf/huashu-chrome?style=social)](https://github.com/alchaincyf/huashu-chrome)
 [![Node](https://img.shields.io/badge/Node-%E2%89%A520-339933?logo=node.js&logoColor=white)](#安装)
@@ -73,9 +73,9 @@ CLI 是入口（install / mcp / doctor），MCP server 是 agent 的接口，本
 ## 为什么需要它
 
 浏览器控制这件事，现在的格局是：能拿到你真实登录态的，多半只给自家客户端用；
-对任何 agent 开放的，多半开的是一个干净的、没登录的浏览器。huashu-chrome 两头都要。
+对任何 agent 开放的，多半开的是一个干净的、没登录的浏览器。agentchrome-mcp 两头都要。
 
-| | **huashu-chrome** | Claude in Chrome | ChatGPT 扩展（Codex） | Playwright MCP | chrome-devtools-mcp | Browser Use |
+| | **agentchrome-mcp** | Claude in Chrome | ChatGPT 扩展（Codex） | Playwright MCP | chrome-devtools-mcp | Browser Use |
 |---|---|---|---|---|---|---|
 | 用你日常的 Chrome，带真实登录态 | ✅ 就是眼前这个 | ✅ | ✅ | ⚠️ 要走扩展模式 | ⚠️ Chrome 144+ 逐次授权 | ⚠️ Harness 接管才行 |
 | 任何支持 MCP 的 agent 都能接 | ✅ 20+ 家通用 | ❌ 只限 Anthropic 客户端 | ❌ Codex CLI 用不了 | ✅ | ✅ | ✅ |
@@ -93,7 +93,7 @@ CLI 是入口（install / mcp / doctor），MCP server 是 agent 的接口，本
 ## 安装
 
 ```bash
-npx huashu-chrome install
+npx agentchrome-mcp install
 ```
 
 一条命令：自动检测这台机器上装了哪些 agent、写好各自的 MCP 配置（动手前先备份，
@@ -118,9 +118,9 @@ npx huashu-chrome install
 ```json
 {
   "mcp": {
-    "huashu-chrome": {
+    "agentchrome-mcp": {
       "type": "local",
-      "command": ["npx", "-y", "huashu-chrome", "mcp", "--client", "opencode"],
+      "command": ["npx", "-y", "agentchrome-mcp", "mcp", "--client", "opencode"],
       "enabled": true
     }
   }
@@ -132,7 +132,7 @@ Windows若无法解析`npx`，可按本机安装方式改用`npx.cmd`。这是�
 已知客户端的Windows / macOS / Linux配置路径按`src/agents.json`匹配。装完验证：
 
 ```bash
-npx huashu-chrome doctor
+npx agentchrome-mcp doctor
 ```
 
 看到「握手正常 · Chrome 扩展在线」就成了。桥进程由 agent 首次调用时自动拉起
@@ -143,25 +143,25 @@ npx huashu-chrome doctor
 
 **Claude Code**
 ```bash
-claude mcp add huashu-chrome -- npx -y huashu-chrome mcp --client claude-code
+claude mcp add agentchrome-mcp -- npx -y agentchrome-mcp mcp --client claude-code
 ```
 
 **Codex CLI** — `~/.codex/config.toml`
 ```toml
-[mcp_servers.huashu-chrome]
+[mcp_servers.agentchrome-mcp]
 command = "npx"
-args = ["-y", "huashu-chrome", "mcp", "--client", "codex"]
+args = ["-y", "agentchrome-mcp", "mcp", "--client", "codex"]
 ```
 
 **Cursor / Gemini CLI / Windsurf / Claude Desktop** — 各自的 JSON 配置里加：
 ```json
-{ "mcpServers": { "huashu-chrome": { "command": "npx", "args": ["-y", "huashu-chrome", "mcp"] } } }
+{ "mcpServers": { "agentchrome-mcp": { "command": "npx", "args": ["-y", "agentchrome-mcp", "mcp"] } } }
 ```
 
 `--client` 可以不写、写错也没关系：侧栏和审计日志里显示的是宿主在 MCP 握手里
 自报的身份（Claude Code / Codex CLI / Gemini CLI / OpenClaw …），这个参数只在宿主没报时兜底。
 
-扩展：`npx huashu-chrome extension` 打印目录，然后 `chrome://extensions`
+扩展：`npx agentchrome-mcp extension` 打印目录，然后 `chrome://extensions`
 → 开发者模式 → 加载已解压的扩展程序。
 
 </details>
@@ -270,7 +270,7 @@ act 停在第 4 步 3/4：
   大麦、即刻、腾讯文档、Ollama，以及两个 canvas 游戏（`sudoku.com` / `flappybird.io`，
   它们是「棋盘不在 DOM 里」这类页面的样板）。已验证的接口名、墙、坑，
   每条都标了实测日期。升级版本就拿到新经验。
-- **本机经验**：`~/.huashu-chrome/learnings/`，agent 每次干活学到的新规律
+- **本机经验**：`~/.agentchrome-mcp/learnings/`，agent 每次干活学到的新规律
   自己存进去（新站摸清了门路、老站发现记录过时了），永远不会被升级覆盖。
   全在你自己的磁盘上，不上传。
 
@@ -279,7 +279,7 @@ agent 开工前查一次（`learnings {domain}`），收工时把非显而易见
 环境不一样，所以工具返回的每一份经验都带着同一句话：与页面实际不符时，
 以实际为准，然后把记录改对。查不到经验也不阻塞，按通用策略干就是了。
 
-摸清了一个新站？欢迎把 `~/.huashu-chrome/learnings/` 里的文件提 PR 到
+摸清了一个新站？欢迎把 `~/.agentchrome-mcp/learnings/` 里的文件提 PR 到
 [`docs/经验/`](docs/经验/)，让所有用户受益。**提之前记得先看一遍有没有把你自己的
 账号、行程、订单号写进去**——那个目录是 agent 自动写的，它不知道哪些字不该出门。
 
@@ -393,8 +393,8 @@ offscreen 万一建不起来，扩展不能整个哑掉。
    抬进模型的注意力里。
 2. **敏感动作不自动升级**——提交 / 支付 / 删除 / 发布这类目标，即使普通事件毫无效果，
    也不会自动改用真实事件重试，避免重复执行。正则 + DOM 特征，不问模型。
-3. **全量审计**——每条命令落 `~/.huashu-chrome/audit.jsonl`，输入的文本做脱敏
-   （密码按输入框类型判断，跟长度无关）。`npx huashu-chrome audit` 随时查。
+3. **全量审计**——每条命令落 `~/.agentchrome-mcp/audit.jsonl`，输入的文本做脱敏
+   （密码按输入框类型判断，跟长度无关）。`npx agentchrome-mcp audit` 随时查。
 4. **连接边界**——桥只接受 `chrome-extension://` 来源的扩展连接，网页想连桥直接被拒；
    Node 侧 agent 走随桥启动轮换的 token。
 5. **受控标签页漂移警告**——标签页被你自己或站点导航走时，读写操作会在返回最前面
@@ -444,14 +444,14 @@ offscreen 万一建不起来，扩展不能整个哑掉。
 ## 排错
 
 ```bash
-npx huashu-chrome doctor            # 一条命令查完整条链路
-npx huashu-chrome audit -n 50       # 看 agent 到底点了什么
-npx huashu-chrome audit --stats     # 真实 agent 的用法统计：回合空档、哪类调用最多、哪些连着出现
+npx agentchrome-mcp doctor            # 一条命令查完整条链路
+npx agentchrome-mcp audit -n 50       # 看 agent 到底点了什么
+npx agentchrome-mcp audit --stats     # 真实 agent 的用法统计：回合空档、哪类调用最多、哪些连着出现
 ```
 
 | 症状 | 原因 | 处理 |
 |---|---|---|
-| `NO_EXTENSION` | 扩展到桥的那条连接断了（插件本身没消失） | 点工具栏的 huashu-chrome 图标 → 「重连」；Chrome 没开就先开；只有改过扩展代码才需要去 `chrome://extensions` 重载 |
+| `NO_EXTENSION` | 扩展到桥的那条连接断了（插件本身没消失） | 点工具栏的 agentchrome-mcp 图标 → 「重连」；Chrome 没开就先开；只有改过扩展代码才需要去 `chrome://extensions` 重载 |
 | `NEEDS_L2` | 这一步要真实输入事件，但没授权 | 点开扩展图标，按一下「启用高保真模式」 |
 | `L2_BUSY` | 调试器被占用 | 多半是你自己开着 DevTools——一个标签页只允许一个调试器。已自动降级 |
 | `STALE_SNAPSHOT` | 页面变了，ref 全作废 | 正常现象，agent 会自己重拍 |
@@ -486,7 +486,7 @@ node src/cli.js bridge --foreground
 ### 仓库结构
 
 ```
-huashu-chrome/
+agentchrome-mcp/
 ├── src/
 │   ├── cli.js              # 入口：install / mcp / bridge / doctor / audit / extension
 │   ├── mcp-server.js       # 22 个工具的定义与握手 instructions
@@ -505,16 +505,16 @@ huashu-chrome/
 
 ## 关于作者
 
-**花叔 Huashu** — AI Native Coder，独立开发者，代表作：小猫补光灯（App Store 付费榜 Top1）、女娲.skill、huashu-design
+**agentchrome Huashu** — AI Native Coder，独立开发者，代表作：小猫补光灯（App Store 付费榜 Top1）、女娲.skill、huashu-design
 
 | 平台 | 链接 |
 |------|------|
 | 🌐 官网 | [bookai.top](https://bookai.top) · [huasheng.ai](https://www.huasheng.ai) |
 | 𝕏 Twitter | [@AlchainHust](https://x.com/AlchainHust) |
-| 📺 B站 | [花叔](https://space.bilibili.com/14097567) |
+| 📺 B站 | [agentchrome](https://space.bilibili.com/14097567) |
 | ▶️ YouTube | [@Alchain](https://www.youtube.com/@Alchain) |
-| 📕 小红书 | [花叔](https://www.xiaohongshu.com/user/profile/5abc6f17e8ac2b109179dfdf) |
-| 💬 公众号 | 微信搜「花叔」 |
+| 📕 小红书 | [agentchrome](https://www.xiaohongshu.com/user/profile/5abc6f17e8ac2b109179dfdf) |
+| 💬 公众号 | 微信搜「agentchrome」 |
 
 ## 许可证
 
@@ -524,11 +524,11 @@ MIT — 随便用，随便改，随便造。
 
 <div align="center">
 
-MIT License © [花叔 Huashu](https://github.com/alchaincyf)
+MIT License © [agentchrome Huashu](https://github.com/alchaincyf)
 
 <br>
 
-<sub>作者的其他项目 · also by 花叔</sub>
+<sub>作者的其他项目 · also by agentchrome</sub>
 
 [huashu-mac-use](https://github.com/alchaincyf/huashu-mac-use) · [女娲.skill](https://github.com/alchaincyf/nuwa-skill) · [huashu-design](https://github.com/alchaincyf/huashu-design) · [达尔文.skill](https://github.com/alchaincyf/darwin-skill) · [全部 skill 总目录](https://github.com/alchaincyf/huashu-skills)
 
@@ -538,13 +538,13 @@ MIT License © [花叔 Huashu](https://github.com/alchaincyf)
 
 ## English
 
-**huashu-chrome** lets any MCP-capable AI agent drive *your own* Chrome — with all your logins
+**agentchrome-mcp** lets any MCP-capable AI agent drive *your own* Chrome — with all your logins
 already in it. It is an MCP server plus a Chrome extension, 22 browser tools, installed with one
 command. No API keys, no separate headless browser, no re-login, no captcha farm: the agent acts
 as you, in the browser you already have open.
 
 Works with Claude Code, Codex CLI, Cursor, Gemini CLI, Cline, Windsurf and ~20 other agents
-(`npx huashu-chrome install` detects what is on your machine and writes each one's MCP config).
+(`npx agentchrome-mcp install` detects what is on your machine and writes each one's MCP config).
 
 Four ideas that make it different from a headless-browser MCP:
 
@@ -559,17 +559,17 @@ Four ideas that make it different from a headless-browser MCP:
   stop on the first no-op.
 - **Learnings compound.** Site knowledge ships with the package (`docs/经验/`, ~20 sites with
   verified endpoints, walls and dead ends, each dated) and the agent writes new findings to
-  `~/.huashu-chrome/learnings/` on your own disk, never uploaded. One Feishu Bitable task took 281
+  `~/.agentchrome-mcp/learnings/` on your own disk, never uploaded. One Feishu Bitable task took 281
   calls and 54 minutes to figure out cold; under 10 calls the second time.
 - **Safety lives outside the model.** Page text is demoted to `<page-content untrusted>`; sensitive
   targets (submit / pay / delete / publish) never auto-retry with trusted events; a payment
   confirmation card lives *in the extension*, where the agent has no parameter to skip it; every
-  command is audited to `~/.huashu-chrome/audit.jsonl` with credentials redacted by key name.
+  command is audited to `~/.agentchrome-mcp/audit.jsonl` with credentials redacted by key name.
   What is **not** done is stated plainly in the 安全 section — money is gated, deletion is not.
 
 You can also see it working: controlled tabs join a colored tab group, the page gets a matching
 outline, a breathing cursor and a small cockpit — all of which are invisible to the agent's own
 screenshots, so it never mistakes our overlay for a page element.
 
-**Install**: `npx huashu-chrome install`, then click through the extension install (browsers do not
-let scripts do that part). Verify with `npx huashu-chrome doctor`.
+**Install**: `npx agentchrome-mcp install`, then click through the extension install (browsers do not
+let scripts do that part). Verify with `npx agentchrome-mcp doctor`.

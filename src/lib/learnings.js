@@ -112,7 +112,7 @@ const playbookNames = (md) => [...String(md || '').matchAll(/^## 剧本：(.+)$/
 // ---------- 剧本草稿 ----------
 //
 // act 完整跑通后，扩展把它整理成剧本（extension/script.js 的 toRecipe），这里落成草稿。
-// 草稿不进经验正文——确认可复用后由 agent 用 adopt 收进去（花叔定的：先草稿、确认后入库）。
+// 草稿不进经验正文——确认可复用后由 agent 用 adopt 收进去（agentchrome定的：先草稿、确认后入库）。
 // 同一份步骤再跑通一次只记次数：跑通过两三次的流程，就是最值得收的那种。
 const DRAFT_DIR = () => path.join(LEARNINGS_DIR, '_drafts');
 const draftFile = (key) => path.join(DRAFT_DIR(), key + '.json');
@@ -192,7 +192,7 @@ export function getLearnings(domain) {
   if (names.length) parts.push(`[可直接运行的剧本：${names.map((x) => `「${x}」`).join('、')}——见下文 \`\`\`act 块]`);
   const drafts = readDrafts(key);
   if (drafts.length) parts.push(draftsNote(key, drafts));
-  if (seed) parts.push(`## 出厂经验（huashu-chrome v${VERSION}）\n\n${seed}`);
+  if (seed) parts.push(`## 出厂经验（agentchrome-mcp v${VERSION}）\n\n${seed}`);
   if (local) parts.push(`## 本机经验\n\n${local}`);
   // 有剧本才多说一句——没有就零噪音（经验不阻塞，也不添乱）
   const n = countPlaybooks(parts.join('\n'));

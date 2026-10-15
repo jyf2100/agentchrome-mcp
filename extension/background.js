@@ -132,8 +132,8 @@ function noteBridgeVersion(v) {
   const level = compat({ ext: mine, cli: v });
   bridgeMismatch = (level === 'same' || level === 'patch') ? '' : v;
   chrome.action.setTitle({ title: bridgeMismatch
-    ? `huashu-chrome：${compatNote(level, { ext: mine, cli: v })}`
-    : 'huashu-chrome' });
+    ? `agentchrome-mcp：${compatNote(level, { ext: mine, cli: v })}`
+    : 'agentchrome-mcp' });
   setBadge(true);
 }
 
@@ -744,10 +744,10 @@ async function noteMarked(tabId, on) {
 //    但那种碰撞的后果只是多染一个组，比拆错用户的组轻得多。
 const groupKey = (sid) => `agentGroup:${sid}`;
 
-// 组名是品牌字不是彩色圆点 emoji（花叔定的：色块图标丑）。它同时是「这个组
+// 组名是品牌字不是彩色圆点 emoji（agentchrome定的：色块图标丑）。它同时是「这个组
 // 是我们建的」的指纹。旧版组名用过身份 emoji，验指纹时兼容一阵子——
 // 不兼容的话，升级前建的组会因为指纹对不上而永远摘不掉。
-const GROUP_TITLE = '花叔';
+const GROUP_TITLE = 'agentchrome';
 const groupTitleOk = (title, sid) => title === GROUP_TITLE || title === identityOf(sid).emoji;
 
 async function syncGroup(tabId, owners) {
@@ -2139,7 +2139,7 @@ const HANDLERS = {
   // 这条路由浏览器原生下载，不进内存、不进 context，还自带断点和大文件支持。
   // saveAs:false 是关键：不弹系统保存对话框（那是扩展够不着的东西）。
   async download(p) {
-    const filename = p.filename || `huashu-chrome/${Date.now()}-${(p.url.split('/').pop() || 'file').split('?')[0].slice(0, 60)}`;
+    const filename = p.filename || `agentchrome-mcp/${Date.now()}-${(p.url.split('/').pop() || 'file').split('?')[0].slice(0, 60)}`;
     const dlId = await chrome.downloads.download({ url: p.url, filename, conflictAction: 'uniquify', saveAs: false });
     return new Promise((resolve, reject) => {
       const timer = setTimeout(() => {
@@ -2585,7 +2585,7 @@ const HANDLERS = {
     chrome.notifications?.create(`hc-ask-${Date.now()}`, {
       type: 'basic',
       iconUrl: 'icons/icon128.png',
-      title: p.title || 'huashu-chrome 需要你搭把手',
+      title: p.title || 'agentchrome-mcp 需要你搭把手',
       message: String(p.prompt || '').slice(0, 180),
       priority: 2,
     }, () => void chrome.runtime.lastError);
