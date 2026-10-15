@@ -503,19 +503,6 @@ agentchrome-mcp/
 └── test/                   # 协议与安全边界（无需浏览器）+ 本地靶场回归
 ```
 
-## 关于作者
-
-**agentchrome Huashu** — AI Native Coder，独立开发者，代表作：小猫补光灯（App Store 付费榜 Top1）、女娲.skill、huashu-design
-
-| 平台 | 链接 |
-|------|------|
-| 🌐 官网 | [bookai.top](https://bookai.top) · [huasheng.ai](https://www.huasheng.ai) |
-| 𝕏 Twitter | [@AlchainHust](https://x.com/AlchainHust) |
-| 📺 B站 | [agentchrome](https://space.bilibili.com/14097567) |
-| ▶️ YouTube | [@Alchain](https://www.youtube.com/@Alchain) |
-| 📕 小红书 | [agentchrome](https://www.xiaohongshu.com/user/profile/5abc6f17e8ac2b109179dfdf) |
-| 💬 公众号 | 微信搜「agentchrome」 |
-
 ## 许可证
 
 MIT — 随便用，随便改，随便造。
@@ -524,13 +511,7 @@ MIT — 随便用，随便改，随便造。
 
 <div align="center">
 
-MIT License © [agentchrome Huashu](https://github.com/alchaincyf)
-
-<br>
-
-<sub>作者的其他项目 · also by agentchrome</sub>
-
-[huashu-mac-use](https://github.com/alchaincyf/huashu-mac-use) · [女娲.skill](https://github.com/alchaincyf/nuwa-skill) · [huashu-design](https://github.com/alchaincyf/huashu-design) · [达尔文.skill](https://github.com/alchaincyf/darwin-skill) · [全部 skill 总目录](https://github.com/alchaincyf/huashu-skills)
+MIT License © 2026 [Roc Ju](https://github.com/jyf2100) · 衍生自 [alchaincyf/huashu-chrome](https://github.com/alchaincyf/huashu-chrome)
 
 </div>
 
